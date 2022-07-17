@@ -1,0 +1,78 @@
+code style.css<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // Add code to check answers to questions
+            document.addEventListener("DOMContentLoaded", function(){
+                let correct = document.querySelector("#correct");
+                let incorrect = document.querySelectorAll(".incorrect");
+
+                <!-- Display incorrect and change button background to green-->
+                correct.addEventListener('click', function(){
+                    correct.style.backgroundColor = "green";
+                    correct.style.color = "white";
+                    correct.style.border = "white";
+                    document.querySelector("#message1").innerHTML = "Correct!";
+
+                })
+                <!-- Display incorrect and change button background to red-->
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener('click', function(){
+                        incorrect[i].style.backgroundColor = "firebrick";
+                        incorrect[i].style.color = "white";
+                        incorrect[i].style.border = "white";
+                        document.querySelector("#message1").innerHTML = "Incorrect!";
+
+                    })
+                }
+                <!-- Display correct and change input font to green-->
+                document.querySelector("#check").addEventListener('click', function(){
+                    let input = document.querySelector("input");
+                    if (input.value == "e" || input.value == "E") {
+                        input.style.color = "green";
+                        document.querySelector("#message2").innerHTML = "Correct!";
+                    }
+                    <!-- Display incorrect and change input font to red-->
+                    else {
+                        input.style.color = "red";
+                        document.querySelector("#message2").innerHTML = "Incorrect!";
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- Add multiple choice question here -->
+                <h3>In which country is a location which experiences the most rainfall in the world? </h3>
+                <button type="button" class="btn btn-outline-primary incorrect">Brazil</button>
+                <button type="button" class="btn btn-outline-primary incorrect">China</button>
+                <button type="button" class="btn btn-outline-primary" id="correct">India</button>
+                <button type="button" class="btn btn-outline-primary incorrect">Columbia</button>
+                <button type="button" class="btn btn-outline-primary incorrect">Nepal</button>
+                <p id="message1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- Add free response question here -->
+                <h3>What is the beginning of eternity, the end of time, the beginning of every end, and the end of every place?</h3>
+                <input type="text">
+                <button type="button" class="btn btn-outline-primary" id="check">Check Answer</button>
+                <p id="message2"></p>
+            </div>
+        </div>
+    </body>
+</html>
